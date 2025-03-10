@@ -17,6 +17,22 @@ describe("Testowy formularz", () => {
         cy.contains('Dziękujemy za przesłanie formularza!').should('not.exist');
     })
 
+    it('Nie wysyła formularza gdy name i age są puste', () =>{
+        cy.get('#email').type("piotrek@gmail.com");
+        
+        cy.get('button').click()
+
+        cy.contains('Dziękujemy za przesłanie formularza!').should('not.exist');
+    })
+
+    it('Nie wysyła formularza gdy name i email są puste', () =>{
+        cy.get('#age').type("23");
+        
+        cy.get('button').click()
+
+        cy.contains('Dziękujemy za przesłanie formularza!').should('not.exist');
+    })
+
     it('Nie wysyła formularza gdy pole age jest puste', () =>{
         cy.get('#name').type("Piotrek");
         cy.get('#email').type("piotrek@gmail.com");
